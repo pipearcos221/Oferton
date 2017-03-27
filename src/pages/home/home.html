@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Bienvenido
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-item>
+    <ion-label floating> Login </ion-label>
+    <ion-input name="login" type="text" [(ngModel)]="login"> </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating> Password </ion-label>
+    <ion-input name="password" type="password" [(ngModel)]="password"> </ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="next()"> Sign In  </button>
+
 </ion-content>
