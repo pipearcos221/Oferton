@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import {Novedad, NovedadesData } from '../../providers/novedades-data';
+import { Novedad, NovedadesData } from '../../providers/novedades-data';
+import { AddNovedadPage } from '../add-novedad/add-novedad';
 
 
 @Component({
@@ -12,12 +13,16 @@ export class NovedadesPage {
 
   novedades: Novedad[]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public service: NovedadesData) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: NovedadesData) {
     this.novedades = [];
   }
 
   ionViewDidEnter() {
-   this.novedades = this.service.data;
+    this.novedades = this.service.data;
+  }
+
+  goToAdd() {
+    this.navCtrl.parent.push(AddNovedadPage)
   }
 
 }

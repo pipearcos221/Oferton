@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar novedad</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <form #form="ngForm">
+    <ion-row margin-bottom>
+
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input name="nombre" type="text" required [(ngModel)]="novedad.nombre"></ion-input>
+      </ion-item>
+
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Imagen</ion-label>
+        <ion-input name="imagen" type="text" required [(ngModel)]="novedad.imagen"></ion-input>
+      </ion-item>
+    </ion-row>
+  </form>
+
+  <button margin-top ion-button block full color="danger" (click)="save()" [disabled]="!form.valid">Agregar</button>
+
+
+</ion-content>

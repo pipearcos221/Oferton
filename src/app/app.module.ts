@@ -6,8 +6,9 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { NovedadesPage } from '../pages/novedades/novedades';
+import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
 
-import {NovedadesData} from '../providers/novedades-data';
+import { NovedadesData } from '../providers/novedades-data';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {NovedadesData} from '../providers/novedades-data';
     MyApp,
     HomePage,
     LoginPage,
-    NovedadesPage
+    NovedadesPage,
+    AddNovedadPage
 
   ],
   imports: [
@@ -26,8 +28,9 @@ import {NovedadesData} from '../providers/novedades-data';
     MyApp,
     HomePage,
     LoginPage,
-    NovedadesPage
+    NovedadesPage,
+    AddNovedadPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler },NovedadesData]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData]
 })
 export class AppModule { }
