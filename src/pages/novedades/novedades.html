@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row>
+
+    <ion-col *ngFor="let h of novedades" col-12 col-md-6 col-lg-4>
+      <ion-card>
+        <img src="{{h.imagen}}">
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
