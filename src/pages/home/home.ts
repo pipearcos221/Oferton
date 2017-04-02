@@ -1,22 +1,52 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+//import { Storage } from '@ionic/storage';
 
-/*
-  Generated class for the Home page.
+import { NavController } from 'ionic-angular';
+import { NovedadesPage } from '../novedades/novedades';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+//import { LoginPage } from '../login/login';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  menuOpc: IMenu[] = [
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    { label: 'Home', icon: 'home' },
+    { label: 'Ropa', icon: 'md-shirt' },
+    { label: 'Comida', icon: 'md-restaurant' },
+    { label: 'Tecnologia', icon: 'md-laptop' },
+    { label: 'Cine', icon: 'md-film' },
+    { label: 'Favoritos', icon: 'md-heart' }
+  ]
+
+  mainContent: any;
+
+
+  constructor(public navCtrl: NavController) {
+    this.mainContent = NovedadesPage;
+  //  storage.get("user").then(val => { console.log(val) });
+  }
+
+  selectMenu(index: number) {
+    // if (index == 0) {
+    //   this.mainContent = HeladosPage;
+    // } else {
+    //   this.mainContent = BebidasPage;
+    // }
+
+  }
+
+  logout() {
+    // this.storage.set("logged", false);
+    // this.navCtrl.setRoot(LoginPage);
   }
 
 }
+
+export interface IMenu {
+  label: string;
+  icon: string;
+} 

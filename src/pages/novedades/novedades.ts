@@ -22,7 +22,7 @@ export class NovedadesPage {
   }
 
   goToAdd() {
-    this.navCtrl.parent.push(AddNovedadPage)
+    this.navCtrl.push(AddNovedadPage)
   }
 
 }
