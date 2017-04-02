@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/login/login';
 import { HomePage } from '../pages/home/home';
 import { NovedadesPage } from '../pages/novedades/novedades';
 import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
+import { AlmacenesPage } from '../pages/almacenes/almacenes';
 
 import { NovedadesData } from '../providers/novedades-data';
 
@@ -17,8 +18,9 @@ import { NovedadesData } from '../providers/novedades-data';
     HomePage,
     LoginPage,
     NovedadesPage,
-    AddNovedadPage
-
+    AddNovedadPage,
+    AlmacenesPage
+    
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -29,7 +31,8 @@ import { NovedadesData } from '../providers/novedades-data';
     HomePage,
     LoginPage,
     NovedadesPage,
-    AddNovedadPage
+    AddNovedadPage,
+    AlmacenesPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData]
 })

@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { NovedadesPage } from '../novedades/novedades';
-
-//import { LoginPage } from '../login/login';
+import { AlmacenesPage } from '../almacenes/almacenes';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -15,6 +15,7 @@ export class HomePage {
   menuOpc: IMenu[] = [
 
     { label: 'Home', icon: 'home' },
+    { label: 'Almacenes', icon: 'md-ionitron' },
     { label: 'Ropa', icon: 'md-shirt' },
     { label: 'Comida', icon: 'md-restaurant' },
     { label: 'Tecnologia', icon: 'md-laptop' },
@@ -27,21 +28,21 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.mainContent = NovedadesPage;
-  //  storage.get("user").then(val => { console.log(val) });
+    //  storage.get("user").then(val => { console.log(val) });
   }
 
   selectMenu(index: number) {
-    // if (index == 0) {
-    //   this.mainContent = HeladosPage;
-    // } else {
-    //   this.mainContent = BebidasPage;
-    // }
+    if (index == 0) {
+      this.mainContent = NovedadesPage;
+    } else {
+      this.mainContent = AlmacenesPage;
+    }
 
   }
 
   logout() {
     // this.storage.set("logged", false);
-    // this.navCtrl.setRoot(LoginPage);
+     this.navCtrl.setRoot(LoginPage);
   }
 
 }
