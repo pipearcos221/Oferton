@@ -25,4 +25,6 @@ export class NovedadesPage {
     this.navCtrl.push(AddNovedadPage)
   }
 
+
+
 }

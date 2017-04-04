@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle> <ion-icon name="menu"></ion-icon></button>
+    <ion-title>almacenes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row>
+
+    <ion-col *ngFor="let h of almacenes" col-6 col-md-4 col-lg-2>
+      
+        <ion-avatar>
+          <img src="{{h.imagen}}">
+        </ion-avatar>
+      
+    </ion-col>
+  </ion-row>
+
+
+</ion-content>
