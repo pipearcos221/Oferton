@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Almacenes page.
+import { Almacen, AlmacenesData } from '../../providers/almacenes-data';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
 @Component({
   selector: 'page-almacenes',
   templateUrl: 'almacenes.html'
 })
 export class AlmacenesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+almacenes: Almacen[]
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AlmacenesPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlmacenesData) {
+    this.almacenes = [];
+  }
+
+  ionViewDidEnter() {
+    this.almacenes = this.service.data;
   }
 
 }

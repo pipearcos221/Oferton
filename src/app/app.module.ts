@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 
@@ -10,7 +11,7 @@ import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
 import { AlmacenesPage } from '../pages/almacenes/almacenes';
 
 import { NovedadesData } from '../providers/novedades-data';
-
+import { AlmacenesData } from '../providers/almacenes-data';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,11 @@ import { NovedadesData } from '../providers/novedades-data';
     NovedadesPage,
     AddNovedadPage,
     AlmacenesPage
-    
+
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,6 +36,6 @@ import { NovedadesData } from '../providers/novedades-data';
     AddNovedadPage,
     AlmacenesPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData]
 })
 export class AppModule { }

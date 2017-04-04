@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 import { NavController } from 'ionic-angular';
 import { NovedadesPage } from '../novedades/novedades';
@@ -15,7 +15,7 @@ export class HomePage {
   menuOpc: IMenu[] = [
 
     { label: 'Home', icon: 'home' },
-    { label: 'Almacenes', icon: 'md-ionitron' },
+    { label: 'Almacenes', icon: 'md-cart' },
     { label: 'Ropa', icon: 'md-shirt' },
     { label: 'Comida', icon: 'md-restaurant' },
     { label: 'Tecnologia', icon: 'md-laptop' },
@@ -26,9 +26,9 @@ export class HomePage {
   mainContent: any;
 
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public storage: Storage) {
     this.mainContent = NovedadesPage;
-    //  storage.get("user").then(val => { console.log(val) });
+    storage.get("user").then(val => { console.log(val) });
   }
 
   selectMenu(index: number) {
@@ -41,8 +41,8 @@ export class HomePage {
   }
 
   logout() {
-    // this.storage.set("logged", false);
-     this.navCtrl.setRoot(LoginPage);
+    this.storage.set("logged", false);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }
