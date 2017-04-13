@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Novedad, NovedadesData } from '../../providers/novedades-data';
 import { AddNovedadPage } from '../add-novedad/add-novedad';
+import { DescripcionPage } from '../descripcion/descripcion';
 
 
 @Component({
@@ -25,6 +26,9 @@ export class NovedadesPage {
     this.navCtrl.parent.push(AddNovedadPage)
   }
 
-
-
+  goToDetail(name: string) {
+    this.navCtrl.parent.push(DescripcionPage, {
+      nombre: name
+    })
+  }
 }

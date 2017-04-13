@@ -1,26 +1,24 @@
 <ion-split-pane when="lg">
-    <ion-menu [content]="content">
+  <ion-menu [content]="content">
 
-        <ion-list no-lines>
-          <ion-list-header>
-            Menu
-          </ion-list-header>
+    <ion-list no-lines>
+      <ion-list-header>
+        Menu
+      </ion-list-header>
 
-          <button ion-item *ngFor="let m of menuOpc; let i = index" menuClose
-            (click)="selectMenu(i)"
-          >
+      <button ion-item *ngFor="let m of menuOpc; let i = index" menuClose (click)="selectMenu(i)">
               <ion-icon [name]="m.icon" margin-right></ion-icon> {{m.label}}
           </button>
 
-          <ion-list-header>
-            Perfil
-          </ion-list-header>
-          <button ion-item menuClose (click)="logout()">
+      <ion-list-header>
+        Perfil
+      </ion-list-header>
+      <button ion-item menuClose (click)="logout()">
             <ion-icon name="md-exit" margin-right ></ion-icon> Cerrar Sesion
           </button>
-        </ion-list>
+    </ion-list>
 
-    </ion-menu>
+  </ion-menu>
 
-    <ion-nav main #content [root]="mainContent"></ion-nav>
+  <ion-nav main #content [root]="mainContent"></ion-nav>
 </ion-split-pane>
