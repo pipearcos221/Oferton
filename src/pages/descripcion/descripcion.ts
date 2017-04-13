@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Novedad, NovedadesData } from '../../providers/novedades-data';
+import { Novedad} from '../../models/novedad';
+import {NovedadesService} from '../../providers/novedades-service';
 
 @Component({
   selector: 'page-descripcion',
@@ -9,24 +10,23 @@ import { Novedad, NovedadesData } from '../../providers/novedades-data';
 })
 export class DescripcionPage {
 
-  data: Novedad;
-  novedades: Novedad[];
-  nombre: string;
+  data: Novedad;  
+  id: string;
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
-  public service: NovedadesData) {
-    this.novedades = [];
-    this.nombre = navParams.get('nombre')
-    this.getNovedad(this.nombre)
+  public service: NovedadesService) {
+    this.data = new Novedad;    
+    this.id = navParams.get('id')
+    this.getNovedad(this.id)
   }
 
   ionViewDidEnter() {
     
   }
 
-  getNovedad(name: string){
-    this.data = this.service.data.find(x => x.nombre  === name)
+  getNovedad(id: string){
+    this.service.getOne(id).subscribe(res => this.data = res);
   }
 
 }

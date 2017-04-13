@@ -14,6 +14,12 @@ import {DescripcionPage} from '../pages/descripcion/descripcion';
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
 
+import {NovedadesService} from '../providers/novedades-service';
+
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -39,6 +45,6 @@ import { AlmacenesData } from '../providers/almacenes-data';
     AlmacenesPage,
     DescripcionPage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })
 export class AppModule { }
