@@ -9,7 +9,11 @@ import { HomePage } from '../pages/home/home';
 import { NovedadesPage } from '../pages/novedades/novedades';
 import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
 import { AlmacenesPage } from '../pages/almacenes/almacenes';
+<<<<<<< HEAD
 import {DescripcionPage} from '../pages/descripcion/descripcion';
+=======
+import { DescripcionPage } from '../pages/descripcion/descripcion';
+>>>>>>> 57ab165b89ecca469f967081283772d9887111d0
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
