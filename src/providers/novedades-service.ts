@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions  } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {Novedad} from '../models/novedad';
+import { Novedad } from '../models/novedad';
 import { URL } from '../app/app.config';
 
 /*
@@ -25,15 +25,15 @@ export class NovedadesService {
     });
   }
 
-  getOne(id:string): Observable<Novedad>{
-    return this.http.get(URL + "/novedades/"+ id).map(response => {
-      return response.json();      
+  getOne(id: string): Observable<Novedad> {
+    return this.http.get(URL + "/novedades/" + id).map(response => {
+      return response.json();
     }).catch(err => {
       return Observable.throw(err);
     });
   }
 
-  
-    
-  
+
+
+
 }
