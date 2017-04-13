@@ -3,13 +3,10 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Novedad, NovedadesData } from '../../providers/novedades-data';
 import { AddNovedadPage } from '../add-novedad/add-novedad';
-<<<<<<< HEAD
+
 import {DescripcionPage} from '../descripcion/descripcion';
 import {NovedadesService} from '../../providers/novedades-service';
-=======
-import { DescripcionPage } from '../descripcion/descripcion';
 
->>>>>>> 57ab165b89ecca469f967081283772d9887111d0
 
 @Component({
   selector: 'page-novedades',
@@ -40,10 +37,5 @@ export class NovedadesPage {
       id: id
     })
   }
-
-  goToDetail(name: string) {
-    this.navCtrl.parent.push(DescripcionPage, {
-      nombre: name
-    })
-  }
+  
 }
