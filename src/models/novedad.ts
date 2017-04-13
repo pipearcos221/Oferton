@@ -1,5 +1,9 @@
 export class Novedad {
     // id: string;
     nombre: string;
-    imagen: string;    
+    almacen: string;
+    imagen: string; 
+    tipo: string;   
+    precio: number;
+    vigencia: Date;
 }
