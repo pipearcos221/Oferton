@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Almacen, AlmacenesData } from '../../providers/almacenes-data';
+import { NovedadesAlmacenPage } from '../novedades-almacen/novedades-almacen';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Almacen, AlmacenesData } from '../../providers/almacenes-data';
 })
 export class AlmacenesPage {
 
-almacenes: Almacen[]
+  almacenes: Almacen[]
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public service: AlmacenesData) {
     this.almacenes = [];
@@ -18,6 +19,12 @@ almacenes: Almacen[]
 
   ionViewDidEnter() {
     this.almacenes = this.service.data;
+  }
+
+  goToAlmacen(almacen: string) {
+    this.navCtrl.push(NovedadesAlmacenPage, {
+      almacen: almacen
+    })
   }
 
 }

@@ -15,7 +15,7 @@
     <ion-col *ngFor="let h of almacenes" col-6 col-md-4 col-lg-2>
       
         <ion-avatar>
-          <img src="{{h.imagen}}">
+          <img src="{{h.imagen}}" (click)="goToAlmacen(almacen = h.nombre)">
         </ion-avatar>
       
     </ion-col>

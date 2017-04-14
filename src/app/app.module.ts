@@ -12,6 +12,7 @@ import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
 import { AlmacenesPage } from '../pages/almacenes/almacenes';
 import { DescripcionPage } from '../pages/descripcion/descripcion';
 import { MapaPage } from '../pages/mapa/mapa';
+import { NovedadesAlmacenPage } from '../pages/novedades-almacen/novedades-almacen';
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
@@ -30,7 +31,8 @@ import 'rxjs/add/operator/catch';
     AddNovedadPage,
     AlmacenesPage,
     DescripcionPage,
-    MapaPage
+    MapaPage,
+    NovedadesAlmacenPage
 
   ],
   imports: [
@@ -49,7 +51,8 @@ import 'rxjs/add/operator/catch';
     AddNovedadPage,
     AlmacenesPage,
     DescripcionPage,
-    MapaPage
+    MapaPage,
+    NovedadesAlmacenPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })

@@ -40,6 +40,14 @@ export class NovedadesService {
     });
   }
 
+  getbyalmacen(almacen: string): Observable<Novedad[]> {
+    return this.http.get(URL + "/novedades/almacen/" + almacen).map(response => {
+      return response.json();
+    }).catch(err => {
+      return Observable.throw(err);
+    });
+  }
+
 
 
 
