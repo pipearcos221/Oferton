@@ -18,6 +18,7 @@ import { ComidaPage } from '../pages/comida/comida';
 import { ElectrodomesticosPage } from '../pages/electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { RopaPage } from '../pages/ropa/ropa';
+import { DeportesPage } from '../pages/deportes/deportes';
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
@@ -42,7 +43,8 @@ import 'rxjs/add/operator/catch';
     ComidaPage,
     ElectrodomesticosPage,
     FavoritosPage,
-    RopaPage
+    RopaPage,
+    DeportesPage
 
   ],
   imports: [
@@ -67,7 +69,8 @@ import 'rxjs/add/operator/catch';
     ComidaPage,
     ElectrodomesticosPage,
     FavoritosPage,
-    RopaPage
+    RopaPage,
+    DeportesPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })
