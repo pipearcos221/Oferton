@@ -8,58 +8,59 @@
 
 <ion-content padding>
 
+  <form #form="ngForm">
+    <ion-row margin-bottom>
 
-  <ion-row margin-bottom>
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input name="nombre" type="text" required [(ngModel)]="novedad.nombre"></ion-input>
+      </ion-item>
 
-    <ion-item ion-col col-12 col-md-6>
-      <ion-label floating>Nombre</ion-label>
-      <ion-input name="nombre" type="text" required [(ngModel)]="novedad.nombre"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label> Almacen</ion-label>
+        <ion-select [(ngModel)]="novedad.almacen" [ngModelOptions]="{standalone: true}">
+          <ion-option value="Exito"> Exito </ion-option>
+          <ion-option value="Jumbo"> Jumbo </ion-option>
+          <ion-option value="Zara"> Zara </ion-option>
+          <ion-option value="Chevignon"> Chevignon </ion-option>
+          <ion-option value="Americanino"> Americanino </ion-option>
+          <ion-option value="Royal Films"> Royal Films </ion-option>
+          <ion-option value="Totto"> Totto </ion-option>
+          <ion-option value="Adidas"> Adidas </ion-option>
+          <ion-option value="Nike"> Nike </ion-option>
+          <ion-option value="Le Coq Sportif"> Le Coq Sportif </ion-option>
+          <ion-option value="Electromillonaria"> Electromillonaria </ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label> Almacen</ion-label>
-      <ion-select [(ngModel)]="novedad.almacen" [ngModelOptions]="{standalone: true}">
-        <ion-option value="Exito"> Exito </ion-option>
-        <ion-option value="Jumbo"> Jumbo </ion-option>
-        <ion-option value="Zara"> Zara </ion-option>
-        <ion-option value="Chevignon"> Chevignon </ion-option>
-        <ion-option value="Americanino"> Americanino </ion-option>
-        <ion-option value="Royal Films"> Royal Films </ion-option>
-        <ion-option value="Totto"> Totto </ion-option>
-        <ion-option value="Adidas"> Adidas </ion-option>
-        <ion-option value="Nike"> Nike </ion-option>
-        <ion-option value="Le Coq Sportif"> Le Coq Sportif </ion-option>
-        <ion-option value="Electromillonaria"> Electromillonaria </ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Imagen</ion-label>
+        <ion-input name="imagen" type="text" required [(ngModel)]="novedad.imagen"></ion-input>
+      </ion-item>
 
-    <ion-item ion-col col-12 col-md-6>
-      <ion-label floating>Imagen</ion-label>
-      <ion-input name="imagen" type="text" required [(ngModel)]="novedad.imagen"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label> Tipo </ion-label>
+        <ion-select ion-input [(ngModel)]="novedad.tipo" [ngModelOptions]="{standalone: true}">
+          <ion-option value="Ropa"> Ropa </ion-option>
+          <ion-option value="Comida"> Comida </ion-option>
+          <ion-option value="Electrodomesticos"> Electrodomesticos </ion-option>
+          <ion-option value="Cine"> Cine </ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label> Tipo </ion-label>
-      <ion-select ion-input [(ngModel)]="novedad.tipo" [ngModelOptions]="{standalone: true}">
-        <ion-option value="Ropa"> Ropa </ion-option>
-        <ion-option value="Comida"> Comida </ion-option>
-        <ion-option value="Electrodomesticos"> Electrodomesticos </ion-option>
-        <ion-option value="Cine"> Cine </ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating> Precio </ion-label>
+        <ion-input name="precio" type="number" required [(ngModel)]="novedad.precio"></ion-input>
+      </ion-item>
 
-    <ion-item ion-col col-12 col-md-6>
-      <ion-label floating> Precio </ion-label>
-      <ion-input name="precio" type="number" required [(ngModel)]="novedad.precio"></ion-input>
-    </ion-item>
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating> Vigencia </ion-label>
+        <!--<ion-input name="vigencia" type="Date" required [(ngModel)]="novedad.vigencia"></ion-input>-->
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="novedad.vigencia"></ion-datetime>
+      </ion-item>
 
-    <ion-item ion-col col-12 col-md-6>
-      <ion-label floating> Vigencia </ion-label>
-      <!--<ion-input name="vigencia" type="Date" required [(ngModel)]="novedad.vigencia"></ion-input>-->
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="novedad.vigencia"></ion-datetime>
-    </ion-item>
-
-  </ion-row>
+    </ion-row>
+  </form>
 
 
   <button margin-top ion-button block full color="danger" (click)="save()" [disabled]="!form.valid">Agregar</button>
