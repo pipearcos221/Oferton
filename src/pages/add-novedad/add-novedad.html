@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <form #form="ngForm">
+  
     <ion-row margin-bottom>
 
       <ion-item ion-col col-12 col-md-6>
@@ -19,10 +19,10 @@
 
       <ion-item>
         <ion-label> Almacen</ion-label>
-        <ion-select>
-          <ion-option> Chevignon </ion-option>
-          <ion-option> Zara </ion-option>
-          <ion-option> Americanino </ion-option>
+        <ion-select [(ngModel)]="novedad.almacen">
+          <ion-option value="Chevignon"> Chevignon </ion-option>
+          <ion-option value="Zara"> Zara </ion-option>
+          <ion-option value="Americanino"> Americanino </ion-option>
         </ion-select>
       </ion-item>
 
@@ -33,9 +33,9 @@
 
       <ion-item>
         <ion-label> Tipo </ion-label>
-        <ion-select>
-          <ion-option> Electrodomestico </ion-option>
-          <ion-option> Ropa </ion-option>
+        <ion-select ion-input [(ngModel)]="novedad.tipo">
+          <ion-option value="Electrodomestico"> Electrodomestico </ion-option>
+          <ion-option value="Ropa"> Ropa </ion-option>
         </ion-select>
       </ion-item>
 
@@ -46,13 +46,14 @@
 
       <ion-item ion-col col-12 col-md-6>
         <ion-label floating> Vigencia </ion-label>
-        <ion-input name="vigencia" type="Date" required [(ngModel)]="novedad.vigencia"></ion-input>
+        <!--<ion-input name="vigencia" type="Date" required [(ngModel)]="novedad.vigencia"></ion-input>-->
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="novedad.vigencia"></ion-datetime>
       </ion-item>
 
     </ion-row>
-  </form>
+  
 
-  <button margin-top ion-button block full color="danger" (click)="save()" [disabled]="!form.valid">Agregar</button>
+  <button margin-top ion-button block full color="danger" (click)="save()" >Agregar</button>
 
 
 </ion-content>
