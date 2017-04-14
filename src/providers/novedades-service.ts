@@ -33,6 +33,18 @@ export class NovedadesService {
     });
   }
 
+  add(novedad: Novedad): Observable<boolean > {
+    let contentType = new Headers({ "Content-Type": "application/json" });
+    let options = new RequestOptions(contentType);
+
+    return this.http.post(URL + "/novedades", novedad, options).map(response => {
+      let body = response.json();
+      return body.success;
+    }).catch(err => {
+      return Observable.throw(err);
+    });
+  }
+
 
 
 
