@@ -50,13 +50,13 @@
 
       <ion-item ion-col col-12 col-md-6>
         <ion-label floating> Precio </ion-label>
-        <ion-input name="precio" type="number" required [(ngModel)]="novedad.precio"></ion-input>
+        <ion-input name="precio" type="number" required [(ngModel)]="novedad.precio" [ngModelOptions]="{standalone: true}"></ion-input>
       </ion-item>
 
       <ion-item ion-col col-12 col-md-6>
         <ion-label floating> Vigencia </ion-label>
         <!--<ion-input name="vigencia" type="Date" required [(ngModel)]="novedad.vigencia"></ion-input>-->
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="novedad.vigencia"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="novedad.vigencia" [ngModelOptions]="{standalone: true}"></ion-datetime>
       </ion-item>
 
     </ion-row>
