@@ -5,12 +5,9 @@ import { Novedad } from '../../models/novedad';
 import { NovedadesService } from '../../providers/novedades-service';
 
 import { DescripcionPage } from '../descripcion/descripcion';
-/*
-  Generated class for the NovedadesAlmacen page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
+
 @Component({
   selector: 'page-novedades-almacen',
   templateUrl: 'novedades-almacen.html'
