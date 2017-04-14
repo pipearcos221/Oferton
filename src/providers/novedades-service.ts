@@ -44,7 +44,15 @@ export class NovedadesService {
     return this.http.get(URL + "/novedades/almacen/" + almacen).map(response => {
       return response.json();
     }).catch(err => {
-      return Observable.throw(err);
+      return Observable.throw(true);
+    });
+  }
+
+  getbytipo(tipo: string): Observable<Novedad[]>{
+    return this.http.get(URL + "/novedades/tipo/" + tipo).map(response => {
+      return response.json();
+    }).catch(err => {
+      return Observable.throw(true);
     });
   }
 
