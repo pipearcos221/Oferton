@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { NovedadesPage } from '../novedades/novedades';
 import { AlmacenesPage } from '../almacenes/almacenes';
 import { LoginPage } from '../login/login';
+import { MapaPage } from '../mapa/mapa';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +21,8 @@ export class HomePage {
     { label: 'Comida', icon: 'md-restaurant' },
     { label: 'Tecnologia', icon: 'md-laptop' },
     { label: 'Cine', icon: 'md-film' },
-    { label: 'Favoritos', icon: 'md-heart' }
+    { label: 'Favoritos', icon: 'md-heart' },
+    { label: 'Mapa', icon: 'md-locate' }
   ]
 
   mainContent: any;
@@ -32,10 +34,18 @@ export class HomePage {
   }
 
   selectMenu(index: number) {
-    if (index == 0) {
-      this.mainContent = NovedadesPage;
-    } else {
-      this.mainContent = AlmacenesPage;
+
+    switch (index) {
+
+      case 0: this.mainContent = NovedadesPage;
+        break;
+
+      case 1: this.mainContent = AlmacenesPage;
+        break;
+
+      default: this.mainContent = MapaPage;
+        break;
+
     }
 
   }

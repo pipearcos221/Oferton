@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { MyApp } from './app.component';
 
@@ -9,13 +10,13 @@ import { HomePage } from '../pages/home/home';
 import { NovedadesPage } from '../pages/novedades/novedades';
 import { AddNovedadPage } from '../pages/add-novedad/add-novedad';
 import { AlmacenesPage } from '../pages/almacenes/almacenes';
-import {DescripcionPage} from '../pages/descripcion/descripcion';
-
+import { DescripcionPage } from '../pages/descripcion/descripcion';
+import { MapaPage } from '../pages/mapa/mapa';
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
 
-import {NovedadesService} from '../providers/novedades-service';
+import { NovedadesService } from '../providers/novedades-service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -28,12 +29,16 @@ import 'rxjs/add/operator/catch';
     NovedadesPage,
     AddNovedadPage,
     AlmacenesPage,
-    DescripcionPage
+    DescripcionPage,
+    MapaPage
 
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAQBJObhejvEDuX99tJ612awRuhfGotVYU'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +48,8 @@ import 'rxjs/add/operator/catch';
     NovedadesPage,
     AddNovedadPage,
     AlmacenesPage,
-    DescripcionPage
+    DescripcionPage,
+    MapaPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })
