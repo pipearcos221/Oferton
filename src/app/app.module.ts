@@ -49,11 +49,9 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
-<<<<<<< HEAD
-    NovedadesTipoPage
-=======
+    NovedadesTipoPage,
     DeportesPage
->>>>>>> 117c75fd12e0e4997c73f91e1d5922543c5fe141
+
 
   ],
   imports: [
@@ -79,11 +77,9 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
-<<<<<<< HEAD
-    NovedadesTipoPage
-=======
+    NovedadesTipoPage,
     DeportesPage
->>>>>>> 117c75fd12e0e4997c73f91e1d5922543c5fe141
+
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })
