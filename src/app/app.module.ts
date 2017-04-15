@@ -18,7 +18,11 @@ import { ComidaPage } from '../pages/comida/comida';
 import { ElectrodomesticosPage } from '../pages/electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { RopaPage } from '../pages/ropa/ropa';
+
 import { NovedadesTipoPage } from '../pages/novedades-tipo/novedades-tipo';
+
+import { DeportesPage } from '../pages/deportes/deportes';
+
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
@@ -45,7 +49,11 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
+<<<<<<< HEAD
     NovedadesTipoPage
+=======
+    DeportesPage
+>>>>>>> 117c75fd12e0e4997c73f91e1d5922543c5fe141
 
   ],
   imports: [
@@ -71,7 +79,11 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
+<<<<<<< HEAD
     NovedadesTipoPage
+=======
+    DeportesPage
+>>>>>>> 117c75fd12e0e4997c73f91e1d5922543c5fe141
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
 })

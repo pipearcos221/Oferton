@@ -9,7 +9,11 @@ import { ComidaPage } from '../comida/comida';
 import { ElectrodomesticosPage } from '../electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../favoritos/favoritos';
 import { RopaPage } from '../ropa/ropa';
+
 import { NovedadesTipoPage } from '../novedades-tipo/novedades-tipo';
+
+import { DeportesPage } from '../deportes/deportes';
+
 
 import { LoginPage } from '../login/login';
 import { MapaPage } from '../mapa/mapa';
@@ -28,6 +32,7 @@ export class HomePage {
     { label: 'Comida', icon: 'md-restaurant' },
     { label: 'Electrodomesticos', icon: 'md-laptop' },
     { label: 'Cine', icon: 'md-film' },
+    { label: 'Deportes', icon: 'md-football' },
     { label: 'Favoritos', icon: 'md-heart' },
     { label: 'Mapa', icon: 'md-locate' }
   ]
@@ -68,11 +73,16 @@ export class HomePage {
         break;
 
       case 5: this.mainContent = NovedadesTipoPage;
-        this.storage.set("tipo", "cine");
+        this.storage.set("tipo", "Cine");
         this.events.publish("reload");
         break;
 
-      case 6: this.mainContent = FavoritosPage;
+      case 6: this.mainContent = DeportesPage;
+        this.storage.set("tipo", "Deportes");
+        this.events.publish("reload");
+        break;
+
+      case 7: this.mainContent = FavoritosPage;
         break;
 
 
