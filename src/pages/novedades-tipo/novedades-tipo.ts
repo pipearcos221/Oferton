@@ -53,7 +53,7 @@ export class NovedadesTipoPage {
       this.tipo = val;
       this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
     });
-    
+
   }
 
   ngOnDestroy() {
