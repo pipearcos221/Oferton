@@ -25,12 +25,10 @@ export class NovedadesPage {
 
   ionViewDidEnter() {
     this.service.all().subscribe(data => this.novedades = data);
-    console.log(this.novedades);
-
   }
 
   goToAdd() {
-    this.navCtrl.push(AddNovedadPage)
+    this.navCtrl.push(AddNovedadPage);
   }
 
   goToDetail(id: string) {

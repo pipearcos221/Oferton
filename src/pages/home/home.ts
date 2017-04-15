@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-import { NavController, Events } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { NovedadesPage } from '../novedades/novedades';
 import { AlmacenesPage } from '../almacenes/almacenes';
 import { CinePage } from '../cine/cine';
@@ -9,8 +9,6 @@ import { ComidaPage } from '../comida/comida';
 import { ElectrodomesticosPage } from '../electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../favoritos/favoritos';
 import { RopaPage } from '../ropa/ropa';
-
-import { NovedadesTipoPage } from '../novedades-tipo/novedades-tipo';
 
 import { DeportesPage } from '../deportes/deportes';
 
@@ -37,13 +35,13 @@ export class HomePage {
     { label: 'Mapa', icon: 'md-locate' }
   ]
 
-  mainContent: any;
-
+  mainContent: any;  
 
   constructor(public navCtrl: NavController,
     public storage: Storage,
-    public events: Events) {
-    this.mainContent = NovedadesPage;
+    private params: NavParams
+  ) {
+    this.mainContent = NovedadesPage;    
     storage.get("user").then(val => { console.log(val) });
   }
 
@@ -57,29 +55,19 @@ export class HomePage {
       case 1: this.mainContent = AlmacenesPage;
         break;
 
-      case 2: this.mainContent = NovedadesTipoPage;
-        this.storage.set("tipo", "Ropa");
-        this.events.publish("reload");
+      case 2: this.mainContent = RopaPage;
         break;
 
-      case 3: this.mainContent = NovedadesTipoPage;
-        this.storage.set("tipo", "Comida");
-        this.events.publish("reload");
+      case 3: this.mainContent = ComidaPage;
         break;
 
-      case 4: this.mainContent = NovedadesTipoPage;
-        this.storage.set("tipo", "Electrodomesticos");
-        this.events.publish("reload");
+      case 4: this.mainContent = ElectrodomesticosPage;
         break;
 
-      case 5: this.mainContent = NovedadesTipoPage;
-        this.storage.set("tipo", "Cine");
-        this.events.publish("reload");
+      case 5: this.mainContent = CinePage;
         break;
 
       case 6: this.mainContent = DeportesPage;
-        this.storage.set("tipo", "Deportes");
-        this.events.publish("reload");
         break;
 
       case 7: this.mainContent = FavoritosPage;

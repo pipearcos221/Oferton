@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Events } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { Novedad } from '../../models/novedad';
@@ -25,39 +25,27 @@ export class NovedadesTipoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private event: Events,
     public storage: Storage,
     public service: NovedadesService) {
     this.novedades = [];
-    this.load();
-    this.event.subscribe("reload", () => {
-      this.load();
-    });
+    this.tipo = ""
+    this.tipo = this.navParams.get('tipo');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NovedadesTipoPage');
-
+    this.load();
   }
 
   ionViewDidEnter() {
-    this.event.subscribe("reload", () => {
-      this.load();
-    });
+
   }
 
 
 
   load() {
-    this.storage.get("tipo").then((val: string) => {
-      this.tipo = val;
-      this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
-    });
-
+    this.tipo = this.navParams.data.tipo;
+    this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
   }
 
-  ngOnDestroy() {
-    this.event.unsubscribe("reload");
-  }
 
 }
