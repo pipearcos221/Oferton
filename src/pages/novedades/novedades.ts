@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Novedad, NovedadesData } from '../../providers/novedades-data';
+import { Novedad } from '../../models/novedad';
 import { AddNovedadPage } from '../add-novedad/add-novedad';
 import { MapaPage } from '../mapa/mapa';
 

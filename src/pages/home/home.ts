@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { NovedadesPage } from '../novedades/novedades';
 import { AlmacenesPage } from '../almacenes/almacenes';
 import { CinePage } from '../cine/cine';
@@ -9,6 +9,7 @@ import { ComidaPage } from '../comida/comida';
 import { ElectrodomesticosPage } from '../electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../favoritos/favoritos';
 import { RopaPage } from '../ropa/ropa';
+import { NovedadesTipoPage } from '../novedades-tipo/novedades-tipo';
 
 import { LoginPage } from '../login/login';
 import { MapaPage } from '../mapa/mapa';
@@ -34,7 +35,9 @@ export class HomePage {
   mainContent: any;
 
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
+  constructor(public navCtrl: NavController,
+    public storage: Storage,
+    public events: Events) {
     this.mainContent = NovedadesPage;
     storage.get("user").then(val => { console.log(val) });
   }
@@ -49,16 +52,24 @@ export class HomePage {
       case 1: this.mainContent = AlmacenesPage;
         break;
 
-      case 2: this.mainContent = RopaPage;
+      case 2: this.mainContent = NovedadesTipoPage;
+        this.storage.set("tipo", "Ropa");
+        this.events.publish("reload");
         break;
 
-      case 3: this.mainContent = ComidaPage;
+      case 3: this.mainContent = NovedadesTipoPage;
+        this.storage.set("tipo", "Comida");
+        this.events.publish("reload");
         break;
 
-      case 4: this.mainContent = ElectrodomesticosPage;
+      case 4: this.mainContent = NovedadesTipoPage;
+        this.storage.set("tipo", "Electrodomesticos");
+        this.events.publish("reload");
         break;
 
-      case 5: this.mainContent = CinePage;
+      case 5: this.mainContent = NovedadesTipoPage;
+        this.storage.set("tipo", "cine");
+        this.events.publish("reload");
         break;
 
       case 6: this.mainContent = FavoritosPage;
