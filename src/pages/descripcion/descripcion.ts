@@ -17,6 +17,7 @@ export class DescripcionPage {
   data: Novedad;
   id: string;
   fav: boolean;
+  agg: boolean;
 
 
   constructor(public navCtrl: NavController,
@@ -26,6 +27,7 @@ export class DescripcionPage {
     this.data = new Novedad;
     this.id = navParams.get('id');
     this.fav = navParams.get('fav');
+    this.agg = false;
     if (this.fav) {
       this.getFavorito(this.id);
     } else {
@@ -52,8 +54,11 @@ export class DescripcionPage {
     if (this.fav) {
 
     } else {
-      this.dao.insert(this.data);
-      console.log("id almacenado: " + this.data.id)
+      if (this.agg) {
+        this.dao.insert(this.data);
+        console.log("id almacenado: " + this.data.id)
+        this.agg = true;
+      }
     }
 
   }
