@@ -46,7 +46,11 @@ export class DescripcionPage {
 
 
   getNovedad(id: string) {
-    this.service.getOne(id).subscribe(res => this.data = res);
+    this.service.getOne(id).subscribe(res => {
+      this.data = res;
+      this.data._id = res._id
+      console.log(this.data._id);
+    });
   }
 
   getFavorito(id: string) {
@@ -61,7 +65,7 @@ export class DescripcionPage {
     } else {
       if (!this.agg) {
         this.dao.insert(this.data);
-        console.log("id almacenado: " + this.data.id)
+        console.log("id almacenado: " + this.data._id)
         this.agg = true;
         this.storage.set(this.id, true);
       }

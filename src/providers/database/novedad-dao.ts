@@ -14,14 +14,14 @@ export class NovedadDao {
 
   insert(novedad: Novedad): Promise<string> {
     const sql = "INSERT INTO novedad (id, nombre, almacen, imagen, precio, tipo, vigencia) VALUES (?,?,?,?,?,?,?)";
-    return this.con.execute(sql, [novedad.id, novedad.nombre, novedad.almacen, novedad.imagen, novedad.precio, novedad.tipo, novedad.vigencia]).then(result => {
+    return this.con.execute(sql, [novedad._id, novedad.nombre, novedad.almacen, novedad.imagen, novedad.precio, novedad.tipo, novedad.vigencia]).then(result => {
       return Promise.resolve(result.insertId);
     });
   }
 
   update(novedad: Novedad): Promise<any> {
     const sql = "UPDATE novedad SET nombre = ?, almacen = ?, imagen = ?, precio = ?, tipo = ? vigencia = ? WHERE id = ?";
-    return this.con.execute(sql, [novedad.nombre, novedad.almacen, novedad.imagen, novedad.precio, novedad.tipo, novedad.vigencia, novedad.id]);
+    return this.con.execute(sql, [novedad.nombre, novedad.almacen, novedad.imagen, novedad.precio, novedad.tipo, novedad.vigencia, novedad._id]);
   }
 
   delete(id: string): Promise<any> {

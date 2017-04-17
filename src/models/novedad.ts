@@ -1,5 +1,5 @@
 export class Novedad {
-    id: string;
+    _id: string;
     nombre: string;
     almacen: string;
     imagen: string; 
