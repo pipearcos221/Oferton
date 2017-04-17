@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { Novedad } from '../../models/novedad';
 import { NovedadesService } from '../../providers/novedades-service';
@@ -23,11 +24,15 @@ export class DescripcionPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public service: NovedadesService,
-    public dao: NovedadDao) {
+    public dao: NovedadDao,
+    public storage: Storage) {
     this.data = new Novedad;
     this.id = navParams.get('id');
     this.fav = navParams.get('fav');
     this.agg = false;
+    this.storage.get(this.id).then(value =>{
+      this.agg = value;
+    });
     if (this.fav) {
       this.getFavorito(this.id);
     } else {
@@ -54,10 +59,11 @@ export class DescripcionPage {
     if (this.fav) {
 
     } else {
-      if (this.agg) {
+      if (!this.agg) {
         this.dao.insert(this.data);
         console.log("id almacenado: " + this.data.id)
         this.agg = true;
+        this.storage.set(this.id, true);
       }
     }
 
