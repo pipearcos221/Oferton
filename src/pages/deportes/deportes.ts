@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Novedad } from '../../models/novedad';
 import { NovedadesService } from '../../providers/novedades-service';
+import { DescripcionPage } from '../descripcion/descripcion';
 
 /*
   Generated class for the Deportes page.
@@ -32,5 +33,11 @@ export class DeportesPage {
 
   load() {
     this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
+  }
+
+  goToDetail(id: string) {
+    this.navCtrl.push(DescripcionPage, {
+      id: id
+    })
   }
 }

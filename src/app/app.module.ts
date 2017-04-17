@@ -26,8 +26,9 @@ import { DeportesPage } from '../pages/deportes/deportes';
 
 import { NovedadesData } from '../providers/novedades-data';
 import { AlmacenesData } from '../providers/almacenes-data';
-
 import { NovedadesService } from '../providers/novedades-service';
+import { DatabaseConnection } from '../providers/database/database-connection';
+import { NovedadDao } from '../providers/database/novedad-dao';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -81,6 +82,6 @@ import 'rxjs/add/observable/throw';
     DeportesPage
 
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService, DatabaseConnection, NovedadDao]
 })
 export class AppModule { }

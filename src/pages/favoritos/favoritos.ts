@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
+import {Novedad} from '../../models/novedad';
+import {NovedadDao} from '../../providers/database/novedad-dao';
+import { DescripcionPage } from '../descripcion/descripcion';
 
 /*
   Generated class for the Favoritos page.
@@ -13,10 +16,30 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FavoritosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  favoritos: Novedad[]
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritosPage');
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams,
+  public events:Events, 
+  public dao:NovedadDao) {
+    this.favoritos = [];
+    events.subscribe("db:ready",this.loadFavoritos)
   }
 
+  ionViewDidEnter(){
+    this.loadFavoritos();
+  }
+
+  loadFavoritos(){
+    this.dao.all().then(data =>{
+      this.favoritos = data;
+    })
+  }
+
+  goToDetail(id: string) {
+    this.navCtrl.push(DescripcionPage, {
+      id: id,
+      fav: true
+    })
+  }
 }

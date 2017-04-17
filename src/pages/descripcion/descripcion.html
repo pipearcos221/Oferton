@@ -12,10 +12,10 @@
 
   <ion-row>
     <ion-col col-12 col-md-6 col-lg-4>
-      <img class="img-detail" src="{{data.imagen}}">
+      <img class="img-detail" src="{{data.imagen}}" (click)="addFavorito()">
       <abbr title="Marcar como favorito">
           <button outline >
-            <ion-icon class="icono" name="md-heart" margin-right></ion-icon>
+            <ion-icon class="icono" name="md-heart" margin-right (click)="addFavorito()"></ion-icon>
           </button>
       </abbr>
     </ion-col>
