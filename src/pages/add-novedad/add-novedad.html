@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Agregar novedad</ion-title>
   </ion-navbar>
 
@@ -33,10 +33,10 @@
         </ion-select>
       </ion-item>
 
-      <ion-item ion-col col-12 col-md-6>
+      <!--<ion-item ion-col col-12 col-md-6>
         <ion-label floating>Imagen</ion-label>
         <ion-input name="imagen" type="text" required [(ngModel)]="novedad.imagen"></ion-input>
-      </ion-item>
+      </ion-item>-->      
 
       <ion-item>
         <ion-label> Tipo </ion-label>
@@ -61,6 +61,19 @@
       </ion-item>
 
     </ion-row>
+
+    <ion-item *ngIf="novedad.imagen == '' " center>
+					<button class="center" ion-button color="add" large outline (click)="imagen()"> <ion-icon name="images"></ion-icon>
+						&nbsp;Imagen
+						</button>
+				</ion-item>
+
+				<ion-item *ngIf="novedad.imagen != ''">
+					<ion-header>
+						Imagen
+					</ion-header>
+					<img src="{{novedad.imagen}}" (click)="imagen()">
+				</ion-item>
   </form>
 
 
