@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
+import {User} from '../../models/user';
+import { LoginService } from '../../providers/login-service';
 
 
 @Component({
@@ -10,22 +12,45 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
 
-  user: string;
-  pass: string;
+  username: string;
+  password: string;
+  usuario: User
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage) { }
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+    public service: LoginService,
+    public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController
+  ) { }
 
   ionViewDidLoad() {
 
   }
 
-  login() {
+  login() { 
 
-    let data = { user: this.user, password: this.pass };
-    this.storage.set("logged", true);
-    this.storage.set("user", JSON.stringify(data));
+    let loading = this.loadingCtrl.create({ content: "Cargando ..." });
+    loading.present();
 
-    this.navCtrl.setRoot(HomePage);
+    this.service.login(this.username, this.password).subscribe(res => {
+      loading.dismiss();
+      console.log(JSON.stringify(res));    
+      if (res.success) {
+        this.usuario = res.user;
+        this.navCtrl.push(HomePage);
+        this.storage.set('tipo', this.usuario.tipo);
+        this.storage.set("logged", true);
+      } else {
+        this.toastCtrl.create({ message: "Usuario o password invalid", duration: 3000 }).present();
+      }
+
+    }, err => {
+      console.log(JSON.stringify(err));
+    });
+
+
+
   }
 
 }

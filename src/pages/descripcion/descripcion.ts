@@ -30,14 +30,14 @@ export class DescripcionPage {
     this.id = navParams.get('id');
     this.fav = navParams.get('fav');
     this.agg = false;
-    this.storage.get(this.id).then(value =>{
+    this.storage.get(this.id).then(value => {
       this.agg = value;
     });
     if (this.fav) {
-      console.log("es favorito "+this.id)
+      console.log("es favorito " + this.id)
       this.getFavorito(this.id);
     } else {
-      console.log("es novedad "+this.id)
+      console.log("es novedad " + this.id)
       this.getNovedad(this.id)
     }
   }
@@ -72,6 +72,53 @@ export class DescripcionPage {
       }
     }
 
+  }
+
+  delete() {
+    if (this.fav) {
+      this.dao.delete(this.data._id);
+    } else {
+      this.service.delete(this.data._id).subscribe(
+        (res) => {
+          this.processResponse(res);
+        },
+        (err) => this.processResponse(false)
+      );
+
+      this.storage.get(this.data._id).then(val => {
+        let fav = val;
+        if (val) {
+          this.dao.delete(this.data._id);          
+          console.log("id eliminado: " + this.data._id)
+          this.agg = false;
+          this.storage.remove(this.id);
+        }
+      })
+
+      if (this.agg) {
+        this.dao.delete(this.data._id);
+        console.log("id eliminado: " + this.data._id)
+        this.agg = false;
+        this.storage.remove(this.id);
+      }
+    }
+    this.navCtrl.pop();
+
+  }
+
+  processResponse(success: boolean) {
+
+    if (success) {
+      //this.events.publish("reloadnovedads");
+      this.navCtrl.pop();
+      console.log('OK');
+
+
+    } else {
+      // this.events.publish("reloadnovedads");
+      this.navCtrl.pop();
+
+    }
   }
 
 }

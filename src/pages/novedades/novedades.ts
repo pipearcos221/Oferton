@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { Novedad } from '../../models/novedad';
 import { AddNovedadPage } from '../add-novedad/add-novedad';
@@ -15,15 +16,39 @@ import { NovedadesService } from '../../providers/novedades-service';
 })
 export class NovedadesPage {
 
-  novedades: Novedad[]
+  novedades: Novedad[];
+  admin: boolean;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public service: NovedadesService) {
-    this.novedades = [];
+    public service: NovedadesService,
+    public storage: Storage) {
+    this.novedades = [];   
+    
   }
 
+  // ionViewDidLoad(){
+  //   this.storage.get('tipo').then(val =>{
+  //     if(val == 'admin'){
+  //       this.admin = true;
+  //       console.log("es admin")
+  //     }else{
+  //       this.admin = false;
+  //       console.log("es cliente")
+  //     }
+  //   })
+  // }
+
   ionViewDidEnter() {
+    this.storage.get('tipo').then(val =>{
+      if(val == 'admin'){
+        this.admin = true;
+        console.log("es admin")
+      }else{
+        this.admin = false;
+        console.log("es cliente")
+      }
+    })
     this.service.all().subscribe(data => this.novedades = data);
   }
 

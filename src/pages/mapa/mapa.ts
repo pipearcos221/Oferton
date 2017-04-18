@@ -7,8 +7,8 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MapaPage {
 
-  latitud: number = 1.2;
-  longitud: number = -77.267;
+  latitud: number = 2.44;
+  longitud: number = -76.598;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

@@ -18,6 +18,7 @@ import { ComidaPage } from '../pages/comida/comida';
 import { ElectrodomesticosPage } from '../pages/electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { RopaPage } from '../pages/ropa/ropa';
+
 import { DeportesPage } from '../pages/deportes/deportes';
 
 
@@ -26,6 +27,7 @@ import { AlmacenesData } from '../providers/almacenes-data';
 import { NovedadesService } from '../providers/novedades-service';
 import { DatabaseConnection } from '../providers/database/database-connection';
 import { NovedadDao } from '../providers/database/novedad-dao';
+import {LoginService} from '../providers/login-service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -77,6 +79,6 @@ import 'rxjs/add/observable/throw';
     DeportesPage
 
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService, DatabaseConnection, NovedadDao]
+  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, NovedadesData, AlmacenesData, NovedadesService, DatabaseConnection, NovedadDao, LoginService]
 })
 export class AppModule { }

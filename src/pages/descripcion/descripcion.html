@@ -7,7 +7,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="bg-content" padding>
 
 
   <ion-row>
@@ -26,7 +26,13 @@
       {{data.nombre}}
     </p>
   </ion-row>
-  
+
+  <ion-row>
+    <button outline>
+            <ion-icon class="icono" name="md-star" margin-right (click)="delete()">eliminar</ion-icon>
+  </button>
+  </ion-row>
+
 
 
 </ion-content>
