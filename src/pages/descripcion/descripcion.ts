@@ -34,8 +34,10 @@ export class DescripcionPage {
       this.agg = value;
     });
     if (this.fav) {
+      console.log("es favorito "+this.id)
       this.getFavorito(this.id);
     } else {
+      console.log("es novedad "+this.id)
       this.getNovedad(this.id)
     }
   }
@@ -61,7 +63,6 @@ export class DescripcionPage {
 
   addFavorito() {
     if (this.fav) {
-
     } else {
       if (!this.agg) {
         this.dao.insert(this.data);
