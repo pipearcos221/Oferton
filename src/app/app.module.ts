@@ -18,9 +18,6 @@ import { ComidaPage } from '../pages/comida/comida';
 import { ElectrodomesticosPage } from '../pages/electrodomesticos/electrodomesticos';
 import { FavoritosPage } from '../pages/favoritos/favoritos';
 import { RopaPage } from '../pages/ropa/ropa';
-
-import { NovedadesTipoPage } from '../pages/novedades-tipo/novedades-tipo';
-
 import { DeportesPage } from '../pages/deportes/deportes';
 
 
@@ -50,7 +47,6 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
-    NovedadesTipoPage,
     DeportesPage
 
 
@@ -78,7 +74,6 @@ import 'rxjs/add/observable/throw';
     ElectrodomesticosPage,
     FavoritosPage,
     RopaPage,
-    NovedadesTipoPage,
     DeportesPage
 
   ],
