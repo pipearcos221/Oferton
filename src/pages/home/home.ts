@@ -42,7 +42,11 @@ export class HomePage {
     private params: NavParams
   ) {
     this.mainContent = NovedadesPage;    
-    storage.get("user").then(val => { console.log(val) });
+    
+  }
+
+  ionViewDidEnter(){
+    this.storage.get("tipo").then(val => { console.log(val) });
   }
 
   selectMenu(index: number) {

@@ -56,6 +56,15 @@ export class NovedadesService {
     });
   }
 
+  delete(id: string): Observable<boolean>{
+    return this.http.delete(URL + "/novedades/" + id).map(response =>{
+      let body = response.json();
+      return body.success; 
+    }).catch(err =>{
+      return Observable.throw(err);
+    })
+  }
+
 
 
 
