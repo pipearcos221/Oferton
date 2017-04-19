@@ -71,4 +71,13 @@ export class NovedadesPage {
     this.navCtrl.push(MapaPage)
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.service.all().subscribe(data => this.novedades = data);
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }

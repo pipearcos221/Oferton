@@ -19,6 +19,7 @@ export class DescripcionPage {
   id: string;
   fav: boolean;
   agg: boolean;
+  admin: boolean;
 
 
   constructor(public navCtrl: NavController,
@@ -32,6 +33,15 @@ export class DescripcionPage {
   }
 
   ionViewDidEnter() {
+    this.storage.get('tipo').then(val =>{
+      if(val == 'admin'){
+        this.admin = true;
+        console.log("es admin")
+      }else{
+        this.admin = false;
+        console.log("es cliente")
+      }
+    })
     this.id = this.navParams.get('id');
     this.storage.get("" + this.id).then((value: boolean) => {
       if (value) {

@@ -4,16 +4,19 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 
-<ion-segment>
-    <ion-segment-button (click)="goToNovedades()" > Novedades </ion-segment-button>
-    <ion-segment-button (click)="goToMapa()" > Mapa </ion-segment-button>
+  <ion-segment>
+    <ion-segment-button (click)="goToNovedades()"> Novedades </ion-segment-button>
+    <ion-segment-button (click)="goToMapa()"> Mapa </ion-segment-button>
   </ion-segment>
 
 
 </ion-header>
 
 <ion-content class="bg-content" padding>
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" refreshingSpinner="circles" refreshingText="Actualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-row>
 
     <ion-col *ngFor="let h of novedades" col-12 col-md-6 col-lg-4>
@@ -25,8 +28,9 @@
     </ion-col>
   </ion-row>
 
-  <ion-fab  *ngIf="admin == true" right bottom (click)="goToAdd()">
+  <ion-fab *ngIf="admin == true" right bottom (click)="goToAdd()">
     <button ion-fab icon-only color="reddark"> <ion-icon name="add"></ion-icon> </button>
   </ion-fab>
+
 
 </ion-content>
