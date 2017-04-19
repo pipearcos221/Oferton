@@ -22,7 +22,7 @@ export class NovedadesAlmacenPage {
     public service: NovedadesService) { 
       this.novedades = [];
       this.almacen = navParams.get('almacen')
-      this.getNovedades(this.almacen)
+      //this.getNovedades(this.almacen)
     }
 
   ionViewDidLoad() {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
-import {Novedad} from '../../models/novedad';
-import {NovedadDao} from '../../providers/database/novedad-dao';
+import { Novedad } from '../../models/novedad';
+import { NovedadDao } from '../../providers/database/novedad-dao';
 import { DescripcionPage } from '../descripcion/descripcion';
 
 /*
@@ -18,25 +18,26 @@ export class FavoritosPage {
 
   favoritos: Novedad[]
 
-  constructor(public navCtrl: NavController, 
-  public navParams: NavParams,
-  public events:Events, 
-  public dao:NovedadDao) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public events: Events,
+    public dao: NovedadDao) {
     this.favoritos = [];
-    events.subscribe("db:ready",this.loadFavoritos)
+    events.subscribe("db:ready", this.loadFavoritos)
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.loadFavoritos();
   }
 
-  loadFavoritos(){
-    this.dao.all().then(data =>{
+  loadFavoritos() {
+    this.dao.all().then(data => {
       this.favoritos = data;
     })
   }
 
   goToDetail(id: string) {
+    console.log("id presionado " + id);
     this.navCtrl.push(DescripcionPage, {
       id: id,
       fav: true

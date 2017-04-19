@@ -14,7 +14,7 @@
 
     <ion-col *ngFor="let h of favoritos" col-12 col-md-6 col-lg-4>
 
-      <ion-card (click)="goToDetail(id = h.id)">
+      <ion-card (click)="goToDetail(id = h._id)">
 
         <img src="{{h.imagen}}">
       </ion-card>

@@ -58,7 +58,8 @@ export class NovedadesPage {
 
   goToDetail(id: string) {
     this.navCtrl.push(DescripcionPage, {
-      id: id
+      id: id,
+      fav: false
     })
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { Novedad } from '../../models/novedad';
@@ -25,14 +25,24 @@ export class DescripcionPage {
     public navParams: NavParams,
     public service: NovedadesService,
     public dao: NovedadDao,
-    public storage: Storage) {
+    public storage: Storage,
+    public events: Events) {
     this.data = new Novedad;
-    this.id = navParams.get('id');
-    this.fav = navParams.get('fav');
     this.agg = false;
-    this.storage.get(this.id).then(value => {
-      this.agg = value;
+  }
+
+  ionViewDidEnter() {
+    this.id = this.navParams.get('id');
+    this.storage.get("" + this.id).then((value: boolean) => {
+      if (value) {
+        this.agg = value;
+      }
+      else {
+        this.agg = false;
+      }
+      console.log("ya agregado? " + this.agg);
     });
+    this.fav = this.navParams.get('fav');
     if (this.fav) {
       console.log("es favorito " + this.id)
       this.getFavorito(this.id);
@@ -40,10 +50,6 @@ export class DescripcionPage {
       console.log("es novedad " + this.id)
       this.getNovedad(this.id)
     }
-  }
-
-  ionViewDidEnter() {
-
   }
 
 
@@ -58,6 +64,7 @@ export class DescripcionPage {
   getFavorito(id: string) {
     this.dao.getById(id).then(data => {
       this.data = data;
+      console.log("getfavorito id " + this.data._id)
     });
   }
 
@@ -68,7 +75,7 @@ export class DescripcionPage {
         this.dao.insert(this.data);
         console.log("id almacenado: " + this.data._id)
         this.agg = true;
-        this.storage.set(this.id, true);
+        this.storage.set("" + this.id, true);
       }
     }
 
@@ -76,46 +83,30 @@ export class DescripcionPage {
 
   delete() {
     if (this.fav) {
-      this.dao.delete(this.data._id);
+      this.dao.delete(this.id);
+      this.storage.remove(this.id);
+      console.log("favorito eliminado")
+      this.navCtrl.pop();
     } else {
+      console.log("id eliminado: " + this.data._id)
       this.service.delete(this.data._id).subscribe(
         (res) => {
           this.processResponse(res);
         },
         (err) => this.processResponse(false)
       );
-
-      this.storage.get(this.data._id).then(val => {
-        let fav = val;
-        if (val) {
-          this.dao.delete(this.data._id);          
-          console.log("id eliminado: " + this.data._id)
-          this.agg = false;
-          this.storage.remove(this.id);
-        }
-      })
-
-      if (this.agg) {
-        this.dao.delete(this.data._id);
-        console.log("id eliminado: " + this.data._id)
-        this.agg = false;
-        this.storage.remove(this.id);
-      }
     }
-    this.navCtrl.pop();
-
   }
 
   processResponse(success: boolean) {
 
     if (success) {
-      //this.events.publish("reloadnovedads");
+      console.log('OK novedad eliminada');
       this.navCtrl.pop();
-      console.log('OK');
+
 
 
     } else {
-      // this.events.publish("reloadnovedads");
       this.navCtrl.pop();
 
     }

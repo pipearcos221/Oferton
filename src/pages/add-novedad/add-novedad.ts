@@ -76,8 +76,7 @@ export class AddNovedadPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.novedad.imagen = base64Image;
-      console.log(this.novedad.imagen);
+      this.novedad.imagen = base64Image;      
     }, (err) => {
       // Handle error
     });
@@ -88,8 +87,7 @@ export class AddNovedadPage {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       let base64Image = 'data:image/jpeg;base64,' + imageData;
-      this.novedad.imagen = base64Image;
-      console.log(this.novedad.imagen);
+      this.novedad.imagen = base64Image;      
     }, (err) => {
       // Handle error
     });
