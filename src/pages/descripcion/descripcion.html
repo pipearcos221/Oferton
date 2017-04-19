@@ -13,25 +13,28 @@
   <ion-row>
     <ion-col col-12 col-md-6 col-lg-4>
       <img class="img-detail" src="{{data.imagen}}" (click)="addFavorito()">
-      <abbr title="Marcar como favorito">
-          <button outline >
-            <ion-icon class="icono" name="md-heart" margin-right (click)="addFavorito()"></ion-icon>
-          </button>
-      </abbr>
     </ion-col>
   </ion-row>
 
   <ion-row>
-    <p>
-      {{data.nombre}}
-    </p>
+
+    <abbr title="Marcar como favorito">
+          <button class="ad-botton" ion-button icon-only outline>
+            <ion-icon class="icono" name="md-heart" (click)="addFavorito()"> AGREGAR </ion-icon>
+          </button>
+      </abbr>
+
+    <abbr title="Eliminar de favoritos">
+          <button class="ad-botton" ion-button icon-only outline>
+            <ion-icon class="icono" name="md-trash" (click)="delete()">  ELIMINAR</ion-icon>
+          </button>
+       </abbr>
+
   </ion-row>
 
-  <ion-row>
-    <button outline>
-            <ion-icon class="icono" name="md-star" margin-right (click)="delete()">eliminar</ion-icon>
-  </button>
-  </ion-row>
+  <h1> {{data.nombre}} </h1>
+  <p> Disponible en almacenes: {{data.almacen}} </p>
+  <p> Valido hasta: {{data.vigencia}}</p>
 
 
 
