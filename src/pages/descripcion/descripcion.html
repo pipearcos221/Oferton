@@ -12,7 +12,7 @@
 
   <ion-row>
     <ion-col col-12 col-md-6 col-lg-4>
-      <img class="img-detail" src="{{data.imagen}}" (click)="addFavorito()">
+      <img class="img-detail" src="{{data.imagen}}">
     </ion-col>
   </ion-row>
 
@@ -26,7 +26,8 @@
       </abbr>
 
     <abbr title="Eliminar de favoritos">
-          <button class="ad-botton" ion-button icon-only outline (click)="delete()">
+
+          <button *ngIf="(fav == true) || (admin == true && fav == false)"  class="ad-botton" ion-button icon-only outline (click)="delete()">
             <ion-icon class="icono" name="md-trash" >  ELIMINAR</ion-icon>
           </button>
        </abbr>

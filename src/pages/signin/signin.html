@@ -1,13 +1,40 @@
-
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>signin</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Registrarse</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <form #form="ngForm">
+    <ion-row margin-bottom>
+
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input name="username" type="text" required></ion-input>
+      </ion-item>
+
+
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input name="password" type="password" required></ion-input>
+      </ion-item>   
+
+      <ion-item>
+        <ion-label> Tipo </ion-label>
+        <ion-select ion-input  >
+          <ion-option value="admin"> Administrador </ion-option>
+          <ion-option value="cliente"> Cliente </ion-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-row>
+
+  </form>
+
+
+  <button margin-top ion-button block full color="danger" (click)="save()" [disabled]="!form.valid">Guardar</button>
 
 </ion-content>

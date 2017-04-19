@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
-import {User} from '../../models/user';
+import { User } from '../../models/user';
 import { LoginService } from '../../providers/login-service';
+import { SigninPage } from '../signin/signin';
 
 
 @Component({
@@ -28,14 +29,14 @@ export class LoginPage {
 
   }
 
-  login() { 
+  login() {
 
     let loading = this.loadingCtrl.create({ content: "Cargando ..." });
     loading.present();
 
     this.service.login(this.username, this.password).subscribe(res => {
       loading.dismiss();
-      console.log(JSON.stringify(res));    
+      console.log(JSON.stringify(res));
       if (res.success) {
         this.usuario = res.user;
         this.navCtrl.push(HomePage);
@@ -49,8 +50,10 @@ export class LoginPage {
       console.log(JSON.stringify(err));
     });
 
+  }
 
-
+  signin(){
+    this.navCtrl.push(SigninPage);
   }
 
 }

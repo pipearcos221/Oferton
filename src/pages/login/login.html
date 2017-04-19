@@ -10,7 +10,7 @@
 
     <div class="login-inputs">
 
-      <ion-row >
+      <ion-row margin-botton >
         <ion-col col-12 col-md-6 offset-md-6 col-lg-4 offset-lg-8>
           <ion-item color="itemLight">
             <ion-label color="labelLight" floating>Usuario </ion-label>
@@ -27,8 +27,8 @@
       </ion-row>
     </div>
 
-      <ion-row >
-        <button ion-col col-6 col-md-3 offset-md-6 col-lg-2 offset-lg-8 ion-button clear> REGISTRATE</button>
+      <ion-row margin-botton >
+        <button ion-col col-6 col-md-3 offset-md-6 col-lg-2 offset-lg-8 ion-button clear (click)="signin()"> REGISTRATE</button>
         <button ion-col col-6 col-md-3 ion-button col-lg-2 block (click)="login()" color="reddark"> ENTRAR</button>
       </ion-row>
 
