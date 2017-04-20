@@ -28,11 +28,23 @@ export class NovedadesService {
     });
   }
 
-  add(novedad: Novedad): Observable<boolean > {
+  add(novedad: Novedad): Observable<boolean> {
     let contentType = new Headers({ "Content-Type": "application/json" });
     let options = new RequestOptions(contentType);
 
     return this.http.post(URL + "/novedades", novedad, options).map(response => {
+      let body = response.json();
+      return body.success;
+    }).catch(err => {
+      return Observable.throw(err);
+    });
+  }
+
+  update(id: string, novedad: Novedad): Observable<boolean> {
+    let contentType = new Headers({ "Content-Type": "application/json" });
+    let options = new RequestOptions(contentType);
+
+    return this.http.put(URL + "/novedades/" + id, novedad, options).map(response => {
       let body = response.json();
       return body.success;
     }).catch(err => {
@@ -48,7 +60,7 @@ export class NovedadesService {
     });
   }
 
-  getbytipo(tipo: string): Observable<Novedad[]>{
+  getbytipo(tipo: string): Observable<Novedad[]> {
     return this.http.get(URL + "/novedades/tipo/" + tipo).map(response => {
       return response.json();
     }).catch(err => {
@@ -56,15 +68,14 @@ export class NovedadesService {
     });
   }
 
-  delete(id: string): Observable<boolean>{
-    return this.http.delete(URL + "/novedades/" + id).map(response =>{
+  delete(id: string): Observable<boolean> {
+    return this.http.delete(URL + "/novedades/" + id).map(response => {
       let body = response.json();
-      return body.success; 
-    }).catch(err =>{
+      return body.success;
+    }).catch(err => {
       return Observable.throw(err);
     })
   }
-
 
 
 

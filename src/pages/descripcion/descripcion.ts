@@ -6,6 +6,8 @@ import { Novedad } from '../../models/novedad';
 import { NovedadesService } from '../../providers/novedades-service';
 import { NovedadDao } from '../../providers/database/novedad-dao';
 
+import { AddNovedadPage } from '../add-novedad/add-novedad';
+
 
 
 @Component({
@@ -33,11 +35,11 @@ export class DescripcionPage {
   }
 
   ionViewDidEnter() {
-    this.storage.get('tipo').then(val =>{
-      if(val == 'admin'){
+    this.storage.get('tipo').then(val => {
+      if (val == 'admin') {
         this.admin = true;
         console.log("es admin")
-      }else{
+      } else {
         this.admin = false;
         console.log("es cliente")
       }
@@ -122,8 +124,11 @@ export class DescripcionPage {
     }
   }
 
-  goToEdit(){
-    
+  goToEdit() {
+    this.navCtrl.push(AddNovedadPage,{
+      id: this.id,
+      edit: true
+    })
   }
 
 }
