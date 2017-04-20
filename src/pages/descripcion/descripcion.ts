@@ -122,4 +122,8 @@ export class DescripcionPage {
     }
   }
 
+  goToEdit(){
+    
+  }
+
 }

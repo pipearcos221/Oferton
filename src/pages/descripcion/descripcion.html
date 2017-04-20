@@ -37,6 +37,10 @@
   <p> Disponible en almacenes: {{data.almacen}} </p>
   <p> Valido hasta: {{data.vigencia}}</p>
 
+  <ion-fab *ngIf="admin == true" right bottom (click)="goToEdit()">
+    <button ion-fab icon-only color="reddark"> <ion-icon name="md-create"></ion-icon> </button>
+  </ion-fab>
+
 
 
 </ion-content>
