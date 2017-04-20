@@ -17,12 +17,14 @@ import { AddNovedadPage } from '../add-novedad/add-novedad';
 export class DescripcionPage {
 
 
+  novedades: Novedad[];
+  tipo: string = "Electrodomesticos";
+
   data: Novedad;
   id: string;
   fav: boolean;
   agg: boolean;
   admin: boolean;
-
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,8 +32,14 @@ export class DescripcionPage {
     public dao: NovedadDao,
     public storage: Storage,
     public events: Events) {
+    this.novedades = [];
     this.data = new Novedad;
     this.agg = false;
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ElectrodomesticosPage');
+    this.load();
   }
 
   ionViewDidEnter() {
@@ -64,6 +72,9 @@ export class DescripcionPage {
     }
   }
 
+  load() {
+    this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
+  }
 
   getNovedad(id: string) {
     this.service.getOne(id).subscribe(res => {
@@ -125,9 +136,16 @@ export class DescripcionPage {
   }
 
   goToEdit() {
-    this.navCtrl.push(AddNovedadPage,{
+    this.navCtrl.push(AddNovedadPage, {
       id: this.id,
       edit: true
+    })
+  }
+
+
+  goToDetail(id: string) {
+    this.navCtrl.push(DescripcionPage, {
+      id: id
     })
   }
 
