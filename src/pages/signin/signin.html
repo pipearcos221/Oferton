@@ -13,21 +13,26 @@
 
       <ion-item ion-col col-12 col-md-6>
         <ion-label floating>Usuario</ion-label>
-        <ion-input name="username" type="text" required></ion-input>
+        <ion-input name="username" type="text" [(ngModel)]="user.username" required></ion-input>
       </ion-item>
 
 
       <ion-item ion-col col-12 col-md-6>
         <ion-label floating>Contraseña</ion-label>
-        <ion-input name="password" type="password" required></ion-input>
-      </ion-item>   
+        <ion-input name="password" type="password" [(ngModel)]="user.password" required></ion-input>
+      </ion-item>
 
-      <ion-item>
-        <ion-label> Tipo </ion-label>
-        <ion-select ion-input  >
+      <ion-item ion-col col-12 col-md-6>
+        <ion-label floating> Tipo </ion-label>
+        <ion-select [(ngModel)]="user.tipo" [ngModelOptions]="{standalone: true}" required>
           <ion-option value="admin"> Administrador </ion-option>
           <ion-option value="cliente"> Cliente </ion-option>
         </ion-select>
+      </ion-item>
+
+      <ion-item ion-col col-12 col-md-6 *ngIf="user.tipo == 'admin'">
+        <ion-label floating>Pin</ion-label>
+        <ion-input name="password" type="password" [(ngModel)]="pin" required></ion-input>
       </ion-item>
 
     </ion-row>
@@ -35,6 +40,6 @@
   </form>
 
 
-  <button margin-top ion-button block full color="danger" (click)="save()" [disabled]="!form.valid">Guardar</button>
+  <button margin-top ion-button block full color="danger" (click)="sigin()" [disabled]="!form.valid">Guardar</button>
 
 </ion-content>
