@@ -42,7 +42,7 @@
 
   <ion-row>
     <ion-slides pager>
-      <ion-slide *ngFor="let h of novedades" (click)="goToDetail(id = h._id)">
+      <ion-slide *ngFor="let h of novedades" (click)="goToDetail(id = h._id, tipo = h.tipo)">
         <img src="{{h.imagen}}">
       </ion-slide>
     </ion-slides>

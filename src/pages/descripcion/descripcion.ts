@@ -42,7 +42,7 @@ export class DescripcionPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ElectrodomesticosPage');
-    
+
   }
 
   ionViewDidEnter() {
@@ -146,10 +146,11 @@ export class DescripcionPage {
   }
 
 
-  goToDetail(id: string) {
+  goToDetail(id: string, tipo: string) {
     this.navCtrl.push(DescripcionPage, {
-      id: id
+      id: id,
+      fav: false,
+      tipo: tipo
     })
   }
-
 }
