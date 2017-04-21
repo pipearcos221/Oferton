@@ -56,10 +56,11 @@ export class NovedadesPage {
     this.navCtrl.push(AddNovedadPage);
   }
 
-  goToDetail(id: string) {
+  goToDetail(id: string, tipo: string) {
     this.navCtrl.push(DescripcionPage, {
       id: id,
-      fav: false
+      fav: false,
+      tipo: tipo
     })
   }
 

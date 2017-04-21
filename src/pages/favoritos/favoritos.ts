@@ -36,11 +36,12 @@ export class FavoritosPage {
     })
   }
 
-  goToDetail(id: string) {
+  goToDetail(id: string, tipo: string) {
     console.log("id presionado " + id);
     this.navCtrl.push(DescripcionPage, {
       id: id,
-      fav: true
+      fav: true,
+      tipo: tipo
     })
   }
 }

@@ -40,13 +40,11 @@
   <br>
   <h1> Articulos Similares</h1>
 
-  <ion-row >
-    <ion-slides pager *ngFor="let h of novedades" >
-
-      <ion-slide (click)="goToDetail(id = h._id)">
+  <ion-row>
+    <ion-slides pager>
+      <ion-slide *ngFor="let h of novedades" (click)="goToDetail(id = h._id)">
         <img src="{{h.imagen}}">
       </ion-slide>
-      
     </ion-slides>
   </ion-row>
 

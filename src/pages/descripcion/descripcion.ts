@@ -18,13 +18,13 @@ export class DescripcionPage {
 
 
   novedades: Novedad[];
-  tipo: string = "Electrodomesticos";
-
+  tipo: string;
   data: Novedad;
   id: string;
   fav: boolean;
   agg: boolean;
   admin: boolean;
+
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,14 +32,17 @@ export class DescripcionPage {
     public dao: NovedadDao,
     public storage: Storage,
     public events: Events) {
+    this.id = this.navParams.get('id');
     this.novedades = [];
     this.data = new Novedad;
     this.agg = false;
+    this.tipo = navParams.get('tipo');
+    this.load(this.tipo);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ElectrodomesticosPage');
-    this.load();
+    
   }
 
   ionViewDidEnter() {
@@ -72,8 +75,8 @@ export class DescripcionPage {
     }
   }
 
-  load() {
-    this.service.getbytipo(this.tipo).subscribe(data => this.novedades = data);
+  load(tipo: string) {
+    this.service.getbytipo(tipo).subscribe(data => this.novedades = data);
   }
 
   getNovedad(id: string) {
