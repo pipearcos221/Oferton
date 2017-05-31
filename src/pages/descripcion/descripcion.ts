@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Events } from 'ionic-angular';
+import { NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { Novedad } from '../../models/novedad';
@@ -31,6 +31,7 @@ export class DescripcionPage {
     public service: NovedadesService,
     public dao: NovedadDao,
     public storage: Storage,
+    public toastCtrl: ToastController,
     public events: Events) {
     this.id = this.navParams.get('id');
     this.novedades = [];
@@ -99,6 +100,7 @@ export class DescripcionPage {
     } else {
       if (!this.agg) {
         this.dao.insert(this.data);
+        this.toastCtrl.create({ message: "Añadido a favoritos", duration: 3000 }).present();
         console.log("id almacenado: " + this.data._id)
         this.agg = true;
         this.storage.set("" + this.id, true);
@@ -111,6 +113,7 @@ export class DescripcionPage {
     if (this.fav) {
       this.dao.delete(this.id);
       this.storage.remove(this.id);
+      this.toastCtrl.create({ message: "Eliminado de favoritos", duration: 3000 }).present();
       console.log("favorito eliminado")
       this.navCtrl.pop();
     } else {
@@ -127,6 +130,7 @@ export class DescripcionPage {
   processResponse(success: boolean) {
 
     if (success) {
+      this.toastCtrl.create({ message: "Promocion eliminada", duration: 3000 }).present();
       console.log('OK novedad eliminada');
       this.navCtrl.pop();
 

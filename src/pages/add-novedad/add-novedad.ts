@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import { NovedadesService } from '../../providers/novedades-service';
 import { Novedad } from '../../models/novedad';
@@ -17,6 +17,7 @@ export class AddNovedadPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public service: NovedadesService,
+    public toastCtrl: ToastController,
     private alertCtrl: AlertController) {
     this.edit = navParams.get('edit');
     console.log(this.edit);
@@ -26,7 +27,7 @@ export class AddNovedadPage {
       this.id = navParams.get('id');
       console.log("id editar: " + this.id)
       this.service.getOne(this.id).subscribe(res => {
-        this.novedad = res;  
+        this.novedad = res;
         delete this.novedad._id;
         console.log(this.novedad._id);
       });
@@ -43,28 +44,75 @@ export class AddNovedadPage {
 
   }
 
-  update(){
+  update() {
     this.service.update(this.id, this.novedad).subscribe(
       (res) => {
-        this.processResponse(res);
+        this.processResponseu(res);
       },
-      (err) => {this.processResponse(false);
-      console.log("false")}
+      (err) => {
+        this.processResponseu(false);
+        console.log("false")
+      }
     );
   }
 
   processResponse(success: boolean) {
-
     if (success) {
-      //this.events.publish("reloadnovedads");
-      this.navCtrl.pop();
       console.log('OK');
-
-
-    } else {
-      // this.events.publish("reloadnovedads");
+      this.toastCtrl.create({ message: "Promocion creada exitosamente", duration: 3000 }).present();
       this.navCtrl.pop();
+    } else {
       console.log('mal');
+      let confirm = this.alertCtrl.create({
+        title: 'Error',
+        message: 'Hubo un problema al crear la promocion',
+        buttons: [
+          {
+            text: 'Reintentar',
+            handler: () => {
+              this.save();
+              console.log('Reintentar');
+            }
+          }, {
+            text: 'Aceptar',
+            handler: () => {
+              this.navCtrl.pop();
+              console.log('OK');
+            }
+          }
+        ]
+      });
+      confirm.present();
+    }
+  }
+
+  processResponseu(success: boolean) {
+    if (success) {
+      console.log('OK');
+      this.toastCtrl.create({ message: "Promocion actualizada exitosamente", duration: 3000 }).present();
+      this.navCtrl.pop();
+    } else {
+      console.log('mal');
+      let confirm = this.alertCtrl.create({
+        title: 'Error',
+        message: 'Hubo un problema al editar la promocion',
+        buttons: [
+          {
+            text: 'Reintentar',
+            handler: () => {
+              this.update();
+              console.log('Reintentar');
+            }
+          }, {
+            text: 'Aceptar',
+            handler: () => {
+              this.navCtrl.pop();
+              console.log('OK');
+            }
+          }
+        ]
+      });
+      confirm.present();
     }
   }
 

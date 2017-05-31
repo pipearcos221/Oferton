@@ -18,7 +18,7 @@ export class SigninPage {
     public navParams: NavParams,
     public toastCtrl: ToastController,
     public service: LoginService) {
-    this.user = new User;    
+    this.user = new User;
   }
 
   ionViewDidLoad() {
@@ -26,21 +26,38 @@ export class SigninPage {
   }
 
   sigin() {
-    if (this.pin == secret){
-      this.service.signin(this.user).subscribe(res =>{
-      if (res.success) {        
-        this.navCtrl.pop();    
-      } else {
-        if(res.exist){
-          this.toastCtrl.create({ message: "El nombre de usuario ya esta en uso", duration: 3000 }).present();
-        }        
-      }
+    if (this.user.tipo == "admin") {
+      if (this.pin == secret) {
+        this.service.signin(this.user).subscribe(res => {
+          if (res.success) {
+            this.toastCtrl.create({ message: "Te has registrado exitosamente", duration: 3000 }).present();
+            this.navCtrl.pop();
+          } else {
+            if (res.exist) {
+              this.toastCtrl.create({ message: "El nombre de usuario ya esta en uso", duration: 3000 }).present();
+            }
+          }
 
-    }, err => {
-      console.log(JSON.stringify(err));
-    });    
+        }, err => {
+          console.log(JSON.stringify(err));
+        });
+      } else {
+        this.toastCtrl.create({ message: "El pin es invalido", duration: 3000 }).present();
+      }
     }else{
-      this.toastCtrl.create({ message: "El pin es invalido", duration: 3000 }).present();
+      this.service.signin(this.user).subscribe(res => {
+          if (res.success) {
+            this.toastCtrl.create({ message: "Te has registrado exitosamente", duration: 3000 }).present();
+            this.navCtrl.pop();
+          } else {
+            if (res.exist) {
+              this.toastCtrl.create({ message: "El nombre de usuario ya esta en uso", duration: 3000 }).present();
+            }
+          }
+
+        }, err => {
+          console.log(JSON.stringify(err));
+        });
     }
   }
 
