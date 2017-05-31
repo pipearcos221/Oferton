@@ -69,7 +69,7 @@ export class NovedadesPage {
   }
 
   goToMapa() {
-    this.navCtrl.setRoot(MapaPage)
+    this.navCtrl.push(MapaPage)
   }
 
   doRefresh(refresher) {
