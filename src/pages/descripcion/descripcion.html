@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Descripcion</ion-title>
+    <ion-title>{{data.nombre}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,21 +21,21 @@
 
     <abbr title="Marcar como favorito">
           <button class="ad-botton" ion-button icon-only outline (click)="addFavorito()">
-            <ion-icon class="icono" name="md-heart" > AGREGAR </ion-icon>
+            <ion-icon class="icono" name="md-heart" > </ion-icon>
           </button>
       </abbr>
 
     <abbr title="Eliminar de favoritos">
 
           <button *ngIf="(fav == true) || (admin == true && fav == false)"  class="ad-botton" ion-button icon-only outline (click)="delete()">
-            <ion-icon class="icono" name="md-trash" >  ELIMINAR</ion-icon>
+            <ion-icon class="icono" name="md-trash" ></ion-icon>
           </button>
        </abbr>
   </ion-row>
 
-  <h1> {{data.nombre}} </h1>
   <p> Disponible en almacenes: {{data.almacen}} </p>
   <p> Valido hasta: {{data.vigencia}}</p>
+  <p> Precio: {{data.precio}} </p>
 
   <br>
   <h1> Articulos Similares</h1>

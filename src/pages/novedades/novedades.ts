@@ -65,11 +65,11 @@ export class NovedadesPage {
   }
 
   goToNovedades() {
-    this.navCtrl.push(NovedadesPage)
+    
   }
 
   goToMapa() {
-    this.navCtrl.push(MapaPage)
+    this.navCtrl.setRoot(MapaPage)
   }
 
   doRefresh(refresher) {
